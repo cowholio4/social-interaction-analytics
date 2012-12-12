@@ -16,7 +16,7 @@ function trackTwitter(intent_event) {
   if (intent_event) {
     var opt_pagePath;
     if (intent_event.target && intent_event.target.nodeName == 'IFRAME') {
-          opt_target = extractParamFromUri(intent_event.target.src, 'url');
+      var opt_target = extractParamFromUri(intent_event.target.src, 'url');
     }
     _gaq.push(['_trackSocial', 'twitter', 'tweet', opt_pagePath]);
   }
