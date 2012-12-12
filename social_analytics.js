@@ -14,7 +14,7 @@ window.fbAsyncInit = function() {
   });
 };
 
-function trackTwitter(intent_event) {
+function track_tweet(intent_event) {
   if (intent_event) {
     var opt_pagePath;
     if (intent_event.target && intent_event.target.nodeName == 'IFRAME') {
@@ -24,10 +24,18 @@ function trackTwitter(intent_event) {
   }
 }
 
+function track_follow( event ) {
+  var followed_user_id = event.data.user_id;
+  var followed_screen_name = event.data.screen_name;
+  _gaq.push(['_trackSocial', 'twitter', 'follow', followed_screen_name ]);
+
+}
 //Wrap event bindings - Wait for async js to load
 twttr.ready(function (twttr) {
   //event bindings
-  twttr.events.bind('tweet', trackTwitter);
+  twttr.events.bind('tweet', track_tweet);
+  twttr.events.bind('follow', track_follow );
+
 });
 
 
