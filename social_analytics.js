@@ -1,16 +1,18 @@
 // From https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingSocial#facebook
+window.fbAsyncInit = function() {
 
-FB.Event.subscribe('edge.create', function(targetUrl) {
-    _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
-});
-
-FB.Event.subscribe('edge.remove', function(targetUrl) {
-    _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]);
-});
-
-FB.Event.subscribe('message.send', function(targetUrl) {
-    _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
-});
+  FB.Event.subscribe('edge.create', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+  });
+  
+  FB.Event.subscribe('edge.remove', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]);
+  });
+  
+  FB.Event.subscribe('message.send', function(targetUrl) {
+      _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
+  });
+};
 
 function trackTwitter(intent_event) {
   if (intent_event) {
